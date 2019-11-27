@@ -1,0 +1,28 @@
+extends ../layouts/common.pug
+
+block content
+	h1
+		span.mr-3 Đơn hàng
+
+	.d-flex.align-items-center
+		
+
+		form.ml-auto(action="/users/search", method="GET", class="d-flex")
+			input(type="text",name="q", class="form-control")
+			button(class="btn btn-primary ml-2") Search
+	table.table
+		tr
+			th Tên khách hàng
+			th Tên sản phẩm
+			th Số lượng
+			th Chỉnh sửa
+
+		each donhang in donhangs
+			tr
+				td=donhang.user_id
+				td=donhang.sanpham_id
+				td=donhang.soluong
+				td
+					a.btn.btn-info(href='/donhangs/view/' + donhang.id) Xem
+					a.btn.btn-warning(href='/products/edit/'+donhang.id).ml-2 Sửa
+					a.btn.btn-danger(href='/products/delete/' + donhang.id).ml-2 Xóa

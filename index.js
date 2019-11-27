@@ -37,6 +37,8 @@ app.use('/api/users', apiUserRoute);
 
 var authMiddleware = require('./middlewares/auth.middleware');
 
+var donHangRoute = require('./routes/donhang.route');
+app.use('/donhangs', donHangRoute);
 var danhMucRoute = require('./routes/danhmuc.route');
 app.use('/danhmucs', danhMucRoute);
 var userRoute = require('./routes/user.route');

@@ -1,0 +1,12 @@
+extends ../layouts/common.pug
+block content
+
+	h1 View Danh mục
+
+	ul
+		li Tên danh mục: 
+			span= danhmuc.tenDM
+		li Ảnh:
+			img(src=danhmuc.hinh,with="100",height="100")
+		li Mã nhóm danh mục:
+			span=danhmuc.maNhomDM

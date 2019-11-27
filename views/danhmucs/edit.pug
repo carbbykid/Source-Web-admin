@@ -1,0 +1,18 @@
+extends ../layouts/common.pug
+
+block content
+    h1 Sửa danh mục
+    form(action="/danhmucs/update/"+ danhmuc.id, method="POST", enctype="multipart/form-data")
+        .form-group
+            label(for="tenDM") Tên danh mục
+            input#tenDM.form-control(type="text", name="tenDM")
+        .form-group
+            label Nhóm danh mục
+            select.browser-default.custom-select(name="maNhomDM")
+                if nhomdanhmucs
+                    each nhomdanhmuc in nhomdanhmucs
+                        option(value=nhomdanhmuc.maNhomDM)= nhomdanhmuc.tenNhomDM
+        .form-group
+            label Hình
+            input.form-control-file(type="file", name="hinh", value="chọn file")
+        button.btn.btn-outline-primary Create
