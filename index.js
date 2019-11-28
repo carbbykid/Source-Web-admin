@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(cookieParser(process.env.SESSION_SECRET))
 app.use(sessionMiddleware);
 app.use(express.static('public'));
+app.use(express.static('views/layouts'));
 
 var cloudinary = require('cloudinary').v2;
 cloudinary.config({

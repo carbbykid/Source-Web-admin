@@ -1,7 +1,7 @@
 extends ../layouts/common.pug
 
 block content
-    h1 Sửa danh mục
+    h3 Sửa danh mục
     form(action="/danhmucs/update/"+ danhmuc.id, method="POST", enctype="multipart/form-data")
         .form-group
             label(for="tenDM") Tên danh mục
