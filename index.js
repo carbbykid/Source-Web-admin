@@ -20,12 +20,47 @@ app.use(sessionMiddleware);
 app.use(express.static('public'));
 app.use(express.static('views/layouts'));
 
-var cloudinary = require('cloudinary').v2;
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
-});
+var upload = require('./multer')
+
+var cloudinary = require('./cloudinary')
+
+var fs = require('fs')
+
+// Upload mutiple
+app.use('/upload-images',upload.array('image'),async(req,res)=>{
+
+    const uploader = async (path) =>await cloudinary.uploads(path,'Images')
+
+    if(req.method ==='POST'){
+        const urls = []
+        const files = req.files
+
+        for(const file of files){
+            const { path } =file
+
+            const newPath = await uploader(path)
+
+            urls.push(newPath)
+
+            fs.unlinkSync(path)
+        }
+
+        res.status(200).json({
+            message:'Images Uploaded Successfully',
+            data:urls
+        })
+    } else {
+        res.status(405).json({
+            err:"Images not Uploaded Successfully"
+        })
+    }
+})
+// var cloudinary = require('cloudinary').v2;
+// cloudinary.config({
+//     cloud_name: process.env.CLOUD_NAME,
+//     api_key: process.env.API_KEY,
+//     api_secret: process.env.API_SECRET
+// });
 
 var sanPhamApiRoute = require('./api/routes/sanpham.route');
 app.use('/api/sanphams', sanPhamApiRoute);

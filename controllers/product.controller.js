@@ -71,8 +71,40 @@ module.exports.create = async function(req, res) {
 }
 
 module.exports.postCreate = async function(req, res) {
+    //Hinh dai dien
     var result = await cloudinary.uploader.upload(req.file.path);
     req.body.hinh = result.url;
+
+
+    // Upload mutiple
+    app.use('/upload-images',upload.array('image'),async(req,res)=>{
+
+        const uploader = async (path) =>await cloudinary.uploads(path,'Images')
+
+        if(req.method ==='POST'){
+            const urls = []
+            const files = req.files
+
+            for(const file of files){
+                const { path } =file
+
+                const newPath = await uploader(path)
+
+                urls.push(newPath)
+
+                fs.unlinkSync(path)
+            }
+
+            res.status(200).json({
+                message:'Images Uploaded Successfully',
+                data:urls
+            })
+        } else {
+            res.status(405).json({
+                err:"Images not Uploaded Successfully"
+            })
+        }
+    })
     var product = await Product.create(req.body);
     // request.post({
     //     url: 'http://10.10.114.153:3000/api/sanphams/create',
