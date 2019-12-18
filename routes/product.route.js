@@ -14,5 +14,5 @@ router.post('/create',
 router.get('/view/:id', controller.view);
 router.get('/delete/:id', controller.delete);
 router.get('/edit/:id', controller.edit);
-router.post('/update/:id', upload.single('hinh'), controller.update);
+router.post('/update/:id',validate.postCreate, upload.single('hinh'), controller.update);
 module.exports = router;

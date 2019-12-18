@@ -9,29 +9,33 @@ block content
 
 	form(action="/products/update/" + product.id,method="POST", enctype="multipart/form-data")
 		.form-group
-			label(for="ten") Tên sản phẩm
-			input#ten.form-control(name="tenSP",type="text",value=values ? values.ten :"")
+			label(for="tenSP") Tên sản phẩm
+			input#tenSP.form-control(name="tenSP",type="text",value=values ? values.tenSP :"")
 
 		.form-group
-			label(for="mota") Mô tả
-			input#mota.form-control(name="moTa",type="text",value=values ? values.mota :"")
+			label(for="moTa") Mô tả
+			input#moTa.form-control(name="moTa",type="text",value=values ? values.moTa :"")
 		
 		.form-group
 			label(for="gia") Giá
 			input#gia.form-control(name="gia",type="text",value=values ? values.gia :"")
 
 		.form-group
-			label(for="giacu") Giá cũ
-			input#giacu.form-control(name="giaCu",type="text",value=values ? values.giacu :"")
+			label(for="giaCu") Giá cũ
+			input#giaCu.form-control(name="giaCu",type="text",value=values ? values.giaCu :"")
 
 		.form-group
-			label(for="tilegiamgia") Tỉ lệ giảm giá
-			input#tilegiamgia.form-control(name="tiLeGiamGia",type="text",value=values ? values.tilegiamgia :"")
-		.form-group
-			label(for="madanhmuc") Mã danh mục
-			input#madanhmuc.form-control(name="maDM",type="text",value=values ? values.madanhmuc :"")
+			label(for="tiLeGiamGia") Tỉ lệ giảm giá
+			input#tiLeGiamGia.form-control(name="tiLeGiamGia",type="text",value=values ? values.tiLeGiamGia :"")
 
 		.form-group
-			label(for="anh") Ảnh
-			input#anh.form-control-file(name="hinh",type="file")
+			label Danh mục
+			select.browser-default.custom-select(name="maDM")
+				if danhmucs
+					each danhmuc in danhmucs
+						option(value=danhmuc._id)= danhmuc.tenDM
+
+		.form-group
+			label(for="hinh") Hình
+			input#hinh.form-control-file(name="hinh",type="file",value=values ? values.hinh :"")
 		button.btn.btn-primary Update

@@ -35,10 +35,6 @@ html(lang='en')
 					| Quản lý
 				// Nav Item - Pages Collapse Menu
 				li.nav-item
-					a.nav-link.collapsed(href='/donhangs')
-						i.fas.fa-fw.fa-cog
-						span Đơn hàng
-				li.nav-item
 					a.nav-link.collapsed(href='/danhmucs')
 						i.fas.fa-fw.fa-wrench
 						span Danh mục sản phẩm
@@ -47,6 +43,10 @@ html(lang='en')
 					a.nav-link.collapsed(href='/products')
 						i.fas.fa-fw.fa-wrench
 						span Sản phẩm
+				li.nav-item
+					a.nav-link.collapsed(href='/donhangs')
+						i.fas.fa-fw.fa-cog
+						span Đơn hàng
 				// Divider
 				hr.sidebar-divider
 				// Heading
@@ -128,8 +128,8 @@ html(lang='en')
 									.card-body
 										.row.no-gutters.align-items-center
 											.col.mr-2
-												.text-xs.font-weight-bold.text-primary.text-uppercase.mb-1 Earnings (Monthly)
-												.h5.mb-0.font-weight-bold.text-gray-800 $40,000
+												.text-xs.font-weight-bold.text-primary.text-uppercase.mb-1 Thu nhập/năm
+												.h5.mb-0.font-weight-bold.text-gray-800 4.100.500.100
 											.col-auto
 												i.fas.fa-calendar.fa-2x.text-gray-300
 							// Earnings (Monthly) Card Example
@@ -138,8 +138,8 @@ html(lang='en')
 									.card-body
 										.row.no-gutters.align-items-center
 											.col.mr-2
-												.text-xs.font-weight-bold.text-success.text-uppercase.mb-1 Earnings (Annual)
-												.h5.mb-0.font-weight-bold.text-gray-800 $215,000
+												.text-xs.font-weight-bold.text-success.text-uppercase.mb-1 Thu nhập/tháng
+												.h5.mb-0.font-weight-bold.text-gray-800 200.600.210
 											.col-auto
 												i.fas.fa-dollar-sign.fa-2x.text-gray-300
 							// Pending Requests Card Example
@@ -148,8 +148,8 @@ html(lang='en')
 									.card-body
 										.row.no-gutters.align-items-center
 											.col.mr-2
-												.text-xs.font-weight-bold.text-warning.text-uppercase.mb-1 Pending Requests
-												.h5.mb-0.font-weight-bold.text-gray-800 18
+												.text-xs.font-weight-bold.text-warning.text-uppercase.mb-1 Loại sản phẩm bán chạy nhất
+												.h5.mb-0.font-weight-bold.text-gray-800 Điện thoại
 											.col-auto
 												i.fas.fa-comments.fa-2x.text-gray-300
 						
@@ -159,7 +159,7 @@ html(lang='en')
 					footer.sticky-footer.bg-white
 						.container.my-auto
 							.copyright.text-center.my-auto
-								h1 BÁO CÁO GIỮA KÌ
+								//- h1 BÁO CÁO GIỮA KÌ
 					// End of Footer
 					// End of Content Wrapper
 					// End of Page Wrapper
